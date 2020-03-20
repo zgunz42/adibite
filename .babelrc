@@ -1,0 +1,13 @@
+{
+  "plugins": ["babel-plugin-dynamic-import-webpack", "babel-plugin-syntax-dynamic-import"],
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "targets": {
+          "browsers": [">0.25%", "not dead"]
+        }
+      }
+    ]
+  ]
+}
