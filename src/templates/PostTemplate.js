@@ -15,7 +15,7 @@ class PostTemplate extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    moveNavigatorAside = moveNavigatorAside.bind(this);
+    this.moveNavigatorAside = moveNavigatorAside.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +27,7 @@ class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
-
+    console.log(data);
     return (
       <Main>
         <Post post={data.post} slug={pageContext.slug} author={data.author} facebook={facebook} />
@@ -88,11 +88,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    author: markdownRemark(fields: { group: { eq: "author" } }) {
+    author: markdownRemark(fields: { slug: { regex: "/author/" } }) {
       id
       html
     }
-    footnote: markdownRemark(fields: { group: { eq: "footnote" } }) {
+    footnote: markdownRemark(fields: { slug: { regex: "/author/" } }) {
       id
       html
     }

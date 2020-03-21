@@ -3,7 +3,6 @@ import * as PropTypes from "prop-types";
 import React from "react";
 
 // import { MenuItem, MenuList } from "@material-ui/core/Menu";
-import { Manager, Reference, Popper } from "react-popper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -11,7 +10,8 @@ import classNames from "classnames";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import IconButton from "@material-ui/core/IconButton";
-import FormatSizeIcon from "@material-ui/icons/FormatSize";
+import { FormatSize } from "@material-ui/icons";
+import { Popper } from "@material-ui/core";
 
 const styles = theme => ({
   fontSizeSetter: {
@@ -26,94 +26,62 @@ const styles = theme => ({
 });
 
 // eslint-disable-next-line require-jsdoc
-class FontSetter extends React.Component {
-  state = {
-    anchorEl: null,
-    open: false
+function FontSetter({ classes, ...props }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  // eslint-disable-next-line require-jsdoc
-  constructor(props, context) {
-    super(props, context);
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleSetting = this.handleSetting.bind(this);
-  }
-
-  // eslint-disable-next-line require-jsdoc
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
-
-  // eslint-disable-next-line require-jsdoc
-  handleClick() {
-    this.setState({ open: !this.state.open });
-  }
-
-  // eslint-disable-next-line require-jsdoc
-  handleClose() {
-    if (!this.state.open) {
-      return;
-    }
-
-    this.timeout = setTimeout(() => {
-      this.setState({ open: false });
-    });
-  }
-
-  // eslint-disable-next-line require-jsdoc
-  handleSetting(e) {
+  const handleSetting = e => {
     const val = e.target.innerText.replace("%", "");
     const factor = +val / 100;
-    this.props.increaseFont(factor);
-    this.handleClose();
-  }
+    props.increaseFont(factor);
+    handleClose();
+  };
 
-  // eslint-disable-next-line require-jsdoc
-  render() {
-    const { classes } = this.props;
-    const { anchorEl, open } = this.state;
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-    return (
-      <nav className={classes.fontSizeSetter}>
-        <Manager>
-          <Reference>
-            {({ ref }) => (
-              <IconButton
-                ref={ref}
-                aria-label="Increase font size"
-                aria-owns={anchorEl ? "long-menu" : null}
-                aria-haspopup="true"
-                onClick={this.handleClick.bind(this)}
-                title="Change font size"
-                className={classes.open}
-              >
-                <FormatSizeIcon />
-              </IconButton>
-            )}
-          </Reference>
-          <Popper
-            placement="bottom-end"
-            eventsEnabled={open}
-            className={classNames({ [classes.popperClose]: !open })}
-          >
-            <ClickAwayListener onClickAway={this.handleClose.bind(this)}>
-              <Grow in={open} id="font-menu-list" style={{ transformOrigin: "0 0 0" }}>
-                <Paper>
-                  <MenuList role="menu">
-                    <MenuItem onClick={this.handleSetting.bind(this)}>150%</MenuItem>
-                    <MenuItem onClick={this.handleSetting.bind(this)}>125%</MenuItem>
-                    <MenuItem onClick={this.handleSetting.bind(this)}>100%</MenuItem>
-                  </MenuList>
-                </Paper>
-              </Grow>
-            </ClickAwayListener>
-          </Popper>
-        </Manager>
-      </nav>
-    );
-  }
+  return (
+    <nav className={classes.fontSizeSetter}>
+      <IconButton
+        aria-label="Increase font size"
+        aria-owns={anchorEl ? "long-menu" : null}
+        aria-haspopup="true"
+        aria-describedby={id}
+        type="button"
+        onClick={handleClick}
+        title="Change font size"
+        className={classes.open}
+      >
+        <FormatSize />
+      </IconButton>
+      <Popper
+        id={id}
+        open={open}
+        placement="bottom-end"
+        anchorEl={anchorEl}
+        className={classNames({ [classes.popperClose]: !open })}
+      >
+        <ClickAwayListener onClickAway={handleClose}>
+          <Grow in={open} id="font-menu-list" style={{ transformOrigin: "0 0 0" }}>
+            <Paper>
+              <MenuList role="menu">
+                <MenuItem onClick={handleSetting}>150%</MenuItem>
+                <MenuItem onClick={handleSetting}>125%</MenuItem>
+                <MenuItem onClick={handleSetting}>100%</MenuItem>
+              </MenuList>
+            </Paper>
+          </Grow>
+        </ClickAwayListener>
+      </Popper>
+    </nav>
+  );
 }
 
 FontSetter.propTypes = {

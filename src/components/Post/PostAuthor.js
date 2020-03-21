@@ -1,7 +1,6 @@
 import React from "react";
 import * as PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
+import { Avatar, withStyles } from "@material-ui/core";
 
 import config from "../../../content/meta/config";
 import avatar from "../../images/jpg/avatar.jpg";
