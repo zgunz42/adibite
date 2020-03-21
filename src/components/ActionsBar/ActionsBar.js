@@ -93,7 +93,7 @@ class ActionsBar extends React.Component {
 
     this.homeOnClick = featureNavigator.bind(this);
     this.searchOnClick = moveNavigatorAside.bind(this);
-    this.fontSetterOnClick = this.fullscreenOnClick.bind(this);
+    this.fontSetterOnClick = this.fontSetterOnClick.bind(this);
     this.fullscreenOnClick = this.fullscreenOnClick.bind(this);
     this.categoryFilterOnClick = this.categoryFilterOnClick.bind(this);
     this.arrowUpOnClick = this.arrowUpOnClick.bind(this);
@@ -101,18 +101,22 @@ class ActionsBar extends React.Component {
 
   // eslint-disable-next-line require-jsdoc
   componentDidMount() {
-    if (screenfull.enabled) {
+    if (screenfull.isEnabled) {
       screenfull.on("change", () => {
         this.setState({
           fullscreen: screenfull.isFullscreen
         });
       });
+    } else {
+      if (typeof window !== 'undefined') {
+        screenfull.request();
+      }
     }
   }
 
   // eslint-disable-next-line require-jsdoc
   fullscreenOnClick() {
-    if (screenfull.enabled) {
+    if (screenfull.isEnabled) {
       screenfull.toggle().then(console.log);
     }
   }
@@ -168,7 +172,7 @@ class ActionsBar extends React.Component {
         </div>
         <div className={classes.group}>
           {navigatorPosition === "is-aside" && <FontSetter increaseFont={this.fontSetterOnClick} />}
-          {screenfull.enabled && (
+          {screenfull.isEnabled && (
             <IconButton
               aria-label="Fullscreen"
               onClick={this.fullscreenOnClick}
@@ -199,7 +203,7 @@ ActionsBar.propTypes = {
   categoryFilter: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     navigatorPosition: state.navigatorPosition,
     navigatorShape: state.navigatorShape,

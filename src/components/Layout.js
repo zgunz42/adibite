@@ -24,7 +24,6 @@ const InfoBox = React.lazy(() => import("./InfoBox"));
 function Layout({ children, ...props }) {
   const data = useStaticQuery(guery);
   const timeouts = {};
-  const categories = [];
 
   React.useEffect(() => {
     props.setIsWideScreen(isWideScreen());
@@ -40,13 +39,11 @@ function Layout({ children, ...props }) {
         props.setFontSizeIncrease(inLocal);
       }
     }
-
-    getCategories();
   }, []);
 
   // eslint-disable-next-line require-jsdoc
   const getCategories = () => {
-    const dataset = data.posts.edges.reduce((list, edge, i) => {
+    return data.posts.edges.reduce((list, edge, i) => {
       const category = edge.node.frontmatter.category;
       if (category && !~list.indexOf(category)) {
         return list.concat(edge.node.frontmatter.category);
@@ -54,8 +51,6 @@ function Layout({ children, ...props }) {
         return list;
       }
     }, []);
-
-    categories.push(dataset);
   };
 
   const resizeThrottler = () => {
@@ -66,13 +61,12 @@ function Layout({ children, ...props }) {
   const resizeHandler = () => {
     props.setIsWideScreen(isWideScreen());
   };
-
   // TODO: dynamic management of tabindexes for keyboard navigation
   return (
     <LayoutWrapper>
       {children}
       <Navigator posts={data.posts.edges} />
-      <ActionsBar categories={categories} />
+      <ActionsBar categories={getCategories()} />
       <InfoBar pages={data.pages.edges} parts={data.parts.edges} />
       {props.isWideScreen && (
         <Suspense

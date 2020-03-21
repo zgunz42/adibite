@@ -72,7 +72,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    footnote: markdownRemark(fields: { group: { eq: "footnote" } }) {
+    footnote: markdownRemark(fields: { slug: { regex: "/footnote/" } }) {
       id
       html
     }

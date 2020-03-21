@@ -27,7 +27,7 @@ class PostTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
-    console.log(data);
+
     return (
       <Main>
         <Post post={data.post} slug={pageContext.slug} author={data.author} facebook={facebook} />

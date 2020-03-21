@@ -62,8 +62,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const slug = edge.node.fields.slug;
     const isPost = /posts/.test(edge.node.fields.group);
 
-    console.log(slug, isPost);
-
     createPage({
       path: slug,
       component: isPost ? postTemplate : pageTemplate,
