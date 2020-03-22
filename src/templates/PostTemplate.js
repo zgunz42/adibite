@@ -58,12 +58,6 @@ const mapDispatchToProps = {
   setNavigatorShape
 };
 
-// eslint-disable-next-line react/prop-types
-// const HocPostTemplate = ({ children, ...props }) => {
-//   const passProps = { ...props, data };
-//   return <PostTemplate {...passProps}>{children}</PostTemplate>;
-// };
-
 export default connect(mapStateToProps, mapDispatchToProps)(PostTemplate);
 
 export const pageQuery = graphql`

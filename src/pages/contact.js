@@ -10,7 +10,7 @@ import Content from "../components/Main/Content";
 import Form from "../components/ContactForm";
 import config from "../../content/meta/config";
 
-const styles = theme => ({});
+// const styles = theme => ({});
 
 const Contact = () => {
   return (
@@ -31,4 +31,4 @@ Contact.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Contact);
+export default Contact;

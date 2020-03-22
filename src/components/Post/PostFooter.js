@@ -1,12 +1,10 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import * as PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
-import asyncComponent from "../common/AsyncComponent/";
 import PostAuthor from "./PostAuthor";
 import PostComments from "./PostComments";
-import Loading from "../common/Loading/Loading";
-import theme from "../../styles/theme";
+import asyncComponent from "../common/AsyncComponent";
 
 const styles = theme => ({
   footer: {
@@ -19,14 +17,18 @@ const styles = theme => ({
   }
 });
 
-const PostShare = lazy(() => import("./PostShare"));
+const PostShare = asyncComponent(() =>
+  import("./PostShare")
+    .then(module => {
+      return module;
+    })
+    .catch(error => {})
+);
 
 const PostFooter = ({ classes, author, post, slug, facebook }) => {
   return (
     <footer className={classes.footer}>
-      <Suspense fallback={<Loading afterRight={true} />}>
-        <PostShare post={post} slug={slug} />
-      </Suspense>
+      <PostShare post={post} slug={slug} />
       <PostAuthor author={author} />
       <PostComments post={post} slug={slug} facebook={facebook} />
     </footer>

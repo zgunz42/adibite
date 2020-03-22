@@ -14,8 +14,7 @@ class Index extends React.Component {
     this.featureNavigator = featureNavigator.bind(this);
   }
 
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     if (this.props.navigatorPosition !== "is-featured") {
       this.props.setNavigatorPosition("is-featured");
     }

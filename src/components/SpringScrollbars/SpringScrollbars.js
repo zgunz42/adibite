@@ -46,10 +46,6 @@ class SpringScrollbars extends Component {
     return this.scrollbars.getScrollHeight();
   }
 
-  getHeight() {
-    return this.scrollbars.getHeight();
-  }
-
   scrollTop(top) {
     const scrollTop = this.scrollbars.getScrollTop();
     const scrollHeight = this.scrollbars.getScrollHeight();
@@ -65,10 +61,12 @@ class SpringScrollbars extends Component {
   }
 
   handleSpringUpdate(spring) {
-    window.requestAnimationFrame(() => {
-      const val = spring.getCurrentValue();
-      this.scrollbars.scrollTop(val);
-    });
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(() => {
+        const val = spring.getCurrentValue();
+        this.scrollbars.scrollTop(val);
+      });
+    }
   }
 
   render() {

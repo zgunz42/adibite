@@ -1,5 +1,6 @@
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const _ = require("lodash");
+// eslint-disable-next-line no-unused-vars
 const Promise = require("bluebird");
 const path = require("path");
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -71,48 +72,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
-
-// exports.onCreateWebpackConfig = ({ stage, actions }) => {
-//   if (stage === "build-javascript") {
-//     {
-//       let components = store.getState().pages.map(page => page.componentChunkName);
-//       components = _.uniq(components);
-//       actions.setWebpackConfig({
-//         plugins: [
-//           new webpack.optimize.CommonsChunkPlugin({
-//             name: `commons`,
-//             chunks: [`app`, ...components],
-//             minChunks: (module, count) => {
-//               const vendorModuleList = []; // [`material-ui`, `lodash`];
-//               const isFramework = _.some(
-//                 vendorModuleList.map(vendor => {
-//                   const regex = new RegExp(`[\\\\/]node_modules[\\\\/]${vendor}[\\\\/].*`, `i`);
-//                   return regex.test(module.resource);
-//                 })
-//               );
-//               return isFramework || count > 1;
-//             }
-//           })
-//         ]
-//       });
-//       // config.plugin("BundleAnalyzerPlugin", BundleAnalyzerPlugin, [
-//       //   {
-//       //     analyzerMode: "static",
-//       //     reportFilename: "./report/treemap.html",
-//       //     openAnalyzer: true,
-//       //     logLevel: "error",
-//       //     defaultSizes: "gzip"
-//       //   }
-//       // ]);
-//     }
-//   }
-// };
-
-// exports.onCreateBabelConfig = ({ actions }) => {
-//   actions.setBabelPlugin({
-//     name: `syntax-dynamic-import`
-//   });
-//   actions.setBabelPlugin({
-//     name: `dynamic-import-webpack`
-//   });
-// };

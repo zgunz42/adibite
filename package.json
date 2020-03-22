@@ -9,6 +9,7 @@
     "develop": "gatsby develop",
     "develop-host": "gatsby develop --host 192.168.0.112",
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "serve": "gatsby serve",
     "format-output": "prettier src/**/*.{js,jsx}",
     "format": "prettier --write src/**/*.{js,jsx}",
@@ -37,6 +38,7 @@
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "dependencies": {
+    "@loadable/component": "^5.12.0",
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.6",
@@ -52,6 +54,7 @@
     "gatsby-plugin-google-analytics": "^2.1.38",
     "gatsby-plugin-jss": "^2.1.21",
     "gatsby-plugin-layout": "^1.1.24",
+    "gatsby-plugin-loadable-components-ssr": "^2.0.0",
     "gatsby-plugin-manifest": "^2.2.48",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-netlify": "^2.1.35",

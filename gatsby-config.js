@@ -5,7 +5,7 @@ require("dotenv").config({
 const config = require("./content/meta/config");
 
 const query = `{
-  allMarkdownRemark(filter: { id: { regex: "//posts|pages//" } }) {
+  allMarkdownRemark(filter: {fields: { group: { regex: "//posts|pages//" } }}) {
     edges {
       node {
         objectID: id
@@ -229,13 +229,6 @@ module.exports = {
         include: /svg-icons/
       }
     },
-    `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/Layout.js`)
-      }
-    },
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
@@ -263,6 +256,8 @@ module.exports = {
           injectFirst: true
         }
       }
-    }
+    },
+    `gatsby-plugin-netlify`
+    // `gatsby-plugin-layout`,
   ]
 };

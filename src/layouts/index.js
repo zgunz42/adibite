@@ -1,5 +1,4 @@
-import React, { Suspense } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React from "react";
 import * as PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -7,18 +6,28 @@ import theme from "../styles/theme";
 
 import { setFontSizeIncrease, setIsWideScreen } from "../state/createStore";
 
-import asyncComponent from "./common/AsyncComponent/";
-import Loading from "./common/Loading/";
-import Navigator from "./Navigator/";
-import ActionsBar from "./ActionsBar/";
-import InfoBar from "./InfoBar/";
-import LayoutWrapper from "./LayoutWrapper/";
+import Loading from "../components/common/Loading";
+import Navigator from "../components/Navigator";
+import ActionsBar from "../components/ActionsBar";
+import InfoBar from "../components/InfoBar";
+import LayoutWrapper from "../components/LayoutWrapper";
 
 import { isWideScreen, timeoutThrottlerHandler } from "../utils/helpers";
 import { graphql, useStaticQuery } from "gatsby";
+import asyncComponent from "../components/common/AsyncComponent";
 
-// eslint-disable-next-line global-require
-const InfoBox = React.lazy(() => import("./InfoBox"));
+const InfoBox = asyncComponent(
+  () =>
+    import("../components/InfoBox")
+      .then(module => {
+        return module;
+      })
+      .catch(error => {}),
+  <Loading
+    overrides={{ width: `${theme.info.sizes.width}px`, height: "100vh", right: "auto" }}
+    afterRight={true}
+  />
+);
 
 // eslint-disable-next-line require-jsdoc
 function Layout({ children, ...props }) {
@@ -57,7 +66,6 @@ function Layout({ children, ...props }) {
     return timeoutThrottlerHandler(timeouts, "resize", 500, resizeHandler);
   };
 
-  // eslint-disable-next-line require-jsdoc
   const resizeHandler = () => {
     props.setIsWideScreen(isWideScreen());
   };
@@ -69,24 +77,18 @@ function Layout({ children, ...props }) {
       <ActionsBar categories={getCategories()} />
       <InfoBar pages={data.pages.edges} parts={data.parts.edges} />
       {props.isWideScreen && (
-        <Suspense
-          fallback={
-            <Loading
-              overrides={{ width: `${theme.info.sizes.width}px`, height: "100vh", right: "auto" }}
-              afterRight={true}
-            />
-          }
-        >
-          <InfoBox pages={data.pages.edges} parts={data.parts.edges} />
-        </Suspense>
+        <InfoBox
+          pages={data.pages.edges}
+          parts={data.parts.edges}
+        />
       )}
     </LayoutWrapper>
   );
 }
 
 Layout.propTypes = {
-  data: PropTypes.object.isRequired,
-  children: PropTypes.func.isRequired,
+  data: PropTypes.object,
+  children: PropTypes.any,
   setIsWideScreen: PropTypes.func.isRequired,
   isWideScreen: PropTypes.bool.isRequired,
   fontSizeIncrease: PropTypes.number.isRequired,
@@ -105,8 +107,6 @@ const mapDispatchToProps = {
   setIsWideScreen,
   setFontSizeIncrease
 };
-
-// const StyledLayout = withStyles(globals)(Layout);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);
 

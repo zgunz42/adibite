@@ -1,6 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import algoliasearch from "algoliasearch/lite";
 import { InstantSearch, SearchBox, Hits, Stats, Pagination } from "react-instantsearch/dom";
 
 import Hit from "./Hit";
@@ -80,14 +81,12 @@ const styles = theme => ({
 const Search = props => {
   const { classes, algolia } = props;
 
+  const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey);
+
   return (
     <div className={classes.search}>
       {algolia && algolia.appId && (
-        <InstantSearch
-          appId={algolia.appId}
-          apiKey={algolia.searchOnlyApiKey}
-          indexName={algolia.indexName}
-        >
+        <InstantSearch searchClient={searchClient} indexName={algolia.indexName}>
           <SearchBox translations={{ placeholder: "Search" }} />
           <Stats />
           <Hits hitComponent={Hit} />

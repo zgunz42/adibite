@@ -1,7 +1,12 @@
 import React from "react";
+import Helmet from "react-helmet";
 
-function NotFoundPage(props) {
-  return <div>404</div>;
-}
+const NotFoundPage = props => (
+  <div>
+    <Helmet>
+      <title>404 | Not Found</title>
+    </Helmet>
+  </div>
+);
 
 export default NotFoundPage;
