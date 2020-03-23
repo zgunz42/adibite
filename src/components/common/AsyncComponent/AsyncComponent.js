@@ -1,23 +1,20 @@
 import React from "react";
 
+// eslint-disable-next-line require-jsdoc
 export default function asyncComponent(getComponent, loadingComponent) {
-  class AsyncComponent extends React.Component {
-    state = { Component: null };
+  const isSSR = typeof window === "undefined";
+  const Loading = loadingComponent ? loadingComponent : <div>Loading...</div>;
 
-    componentDidMount() {
-      if (!this.state.Component) {
-        getComponent().then(Component => {
-          this.setState({ Component });
-        });
-      }
+  function Internal(props) {
+    if (!isSSR) {
+      const ClientSideOnlyLazy = React.lazy(getComponent);
+      return (
+        <React.Suspense fallback={Loading}>
+          <ClientSideOnlyLazy {...props} />
+        </React.Suspense>
+      );
     }
-    render() {
-      const { Component } = this.state;
-      if (Component) {
-        return <Component {...this.props} />;
-      }
-      return loadingComponent ? loadingComponent : <div>Loading...</div>;
-    }
+    return Loading;
   }
-  return AsyncComponent;
+  return Internal;
 }

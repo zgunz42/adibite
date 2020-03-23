@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../../src/styles/theme";
-import Layout from "../../src/layouts";
 
 export default function TopLayout(props) {
   return (
@@ -19,7 +18,7 @@ export default function TopLayout(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Layout>{props.children}</Layout>
+        {props.children}
       </ThemeProvider>
     </React.Fragment>
   );

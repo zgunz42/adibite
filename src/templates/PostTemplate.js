@@ -10,6 +10,7 @@ import { moveNavigatorAside } from "../utils/shared";
 import Post from "../components/Post/";
 import Footer from "../components/Footer/";
 import Seo from "../components/Seo";
+import Layout from "../layouts";
 
 class PostTemplate extends React.Component {
   constructor(props, context) {
@@ -29,11 +30,13 @@ class PostTemplate extends React.Component {
     const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
 
     return (
-      <Main>
-        <Post post={data.post} slug={pageContext.slug} author={data.author} facebook={facebook} />
-        <Footer footnote={data.footnote} />
-        <Seo data={data.post} facebook={facebook} />
-      </Main>
+      <Layout>
+        <Main>
+          <Post post={data.post} slug={pageContext.slug} author={data.author} facebook={facebook} />
+          <Footer footnote={data.footnote} />
+          <Seo data={data.post} facebook={facebook} />
+        </Main>
+      </Layout>
     );
   }
 }

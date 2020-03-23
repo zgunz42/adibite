@@ -9,6 +9,7 @@ import Main from "../components/Main/";
 import Page from "../components/Page/";
 import Footer from "../components/Footer/";
 import Seo from "../components/Seo";
+import Layout from "../layouts";
 
 class PageTemplate extends React.Component {
   constructor(props, context) {
@@ -27,11 +28,13 @@ class PageTemplate extends React.Component {
     const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
 
     return (
-      <Main>
-        <Page page={data.page} />
-        <Footer footnote={data.footnote} />
-        <Seo data={data.post} facebook={facebook} />
-      </Main>
+      <Layout>
+        <Main>
+          <Page page={data.page} />
+          <Footer footnote={data.footnote} />
+          <Seo data={data.post} facebook={facebook} />
+        </Main>
+      </Layout>
     );
   }
 }

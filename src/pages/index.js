@@ -6,6 +6,7 @@ import * as PropTypes from "prop-types";
 import { setNavigatorPosition, setNavigatorShape } from "../state/createStore";
 import { featureNavigator } from "../utils/shared";
 import Seo from "../components/Seo";
+import Layout from "../layouts";
 
 class Index extends React.Component {
   constructor(props, context) {
@@ -25,9 +26,9 @@ class Index extends React.Component {
     const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
 
     return (
-      <div>
+      <Layout>
         <Seo facebook={facebook} />
-      </div>
+      </Layout>
     );
   }
 }

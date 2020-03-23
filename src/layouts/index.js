@@ -76,12 +76,7 @@ function Layout({ children, ...props }) {
       <Navigator posts={data.posts.edges} />
       <ActionsBar categories={getCategories()} />
       <InfoBar pages={data.pages.edges} parts={data.parts.edges} />
-      {props.isWideScreen && (
-        <InfoBox
-          pages={data.pages.edges}
-          parts={data.parts.edges}
-        />
-      )}
+      {props.isWideScreen && <InfoBox pages={data.pages.edges} parts={data.parts.edges} />}
     </LayoutWrapper>
   );
 }

@@ -28,6 +28,7 @@ const styles = theme => ({
   }
 });
 
+// eslint-disable-next-line require-jsdoc
 function TopMenu(props) {
   const { classes, pages } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -69,12 +70,12 @@ function TopMenu(props) {
                 <MenuItem
                   onClick={e => {
                     props.homeLinkOnClick(e);
-                    this.handleClose();
+                    handleClose();
                   }}
                 >
                   Home
                 </MenuItem>
-                {pages.map((page, i) => {
+                {pages.map(page => {
                   const { fields, frontmatter } = page.node;
 
                   return (
@@ -82,7 +83,7 @@ function TopMenu(props) {
                       <MenuItem
                         onClick={e => {
                           props.pageLinkOnClick(e);
-                          this.handleClose();
+                          handleClose();
                         }}
                       >
                         {frontmatter.menuTitle ? frontmatter.menuTitle : frontmatter.title}
@@ -94,7 +95,7 @@ function TopMenu(props) {
                   <MenuItem
                     onClick={e => {
                       props.pageLinkOnClick(e);
-                      this.handleClose();
+                      handleClose();
                     }}
                   >
                     Contact
