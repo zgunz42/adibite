@@ -1,0 +1,25 @@
+{
+  "siteTitle": "PersonalBlog - a blog starter for GatsbyJS",
+  "shortSiteTitle": "PersonalBlog GatsbyJS Starter",
+  "siteDescription": "PersonalBlog is a GatsbyJS starter.",
+  "siteUrl": "https://gatsby-starter-personal-blog.greglobinski.com",
+  "pathPrefix": "",
+  "siteImage": "preview.jpg",
+  "siteLanguage": "en",
+  "authorName": "greg lobinski",
+  "authorTwitterAccount": "greglobinski",
+  "infoTitle": "greg lobinski",
+  "infoTitleNote": "personal blog",
+  "manifestName": "PersonalBlog - a blog starter for GatsbyJS",
+  "manifestShortName": "PersonalBlog",
+  "manifestStartUrl": "/",
+  "manifestBackgroundColor": "#fff",
+  "manifestThemeColor": "#fff",
+  "manifestDisplay": "standalone",
+  "contactEmail": "john@doe.com",
+  "authorSocialLinks": [
+    { "name": "github", "url": "https://github.com/greglobinski" },
+    { "name": "twitter", "url": "https://twitter.com/greglobinski" },
+    { "name": "facebook", "url": "https://facebook.com/greglobinski" }
+  ]
+}

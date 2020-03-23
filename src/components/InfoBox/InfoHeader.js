@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import avatar from "../../images/jpg/avatar.jpg";
-import config from "../../../content/meta/config";
+import config from "../../../content/meta/config.json";
 
 const styles = theme => ({
   header: {

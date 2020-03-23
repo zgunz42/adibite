@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { setNavigatorPosition } from "../../state/createStore";
 import { featureNavigator, moveNavigatorAside } from "./../../utils/shared";
 
-import config from "../../../content/meta/config";
+import config from "../../../content/meta/config.json";
 import avatar from "../../images/jpg/avatar.jpg";
 import TopMenu from "./TopMenu";
 

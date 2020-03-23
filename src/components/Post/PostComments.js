@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import { withStyles, useTheme } from "@material-ui/core/styles";
 import { Comments, FacebookProvider } from "react-facebook";
 
-import config from "../../../content/meta/config";
+import config from "../../../content/meta/config.json";
 
 const styles = theme => ({
   postComments: {
