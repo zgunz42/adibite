@@ -19,7 +19,7 @@ site_url: https://adibite.xyz
 
 publish_mode: editorial_workflow
 
-media_folder: static/media
+media_folder: static/media/
 public_folder: /media
 
 collections:

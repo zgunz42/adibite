@@ -6930,10 +6930,9 @@ gatsby-remark-prismjs@^3.3.36:
     parse-numeric-range "^0.0.2"
     unist-util-visit "^1.4.1"
 
-gatsby-remark-relative-images@^0.3.0:
+gatsby-remark-relative-images@zgunz42/gatsby-remark-relative-images:
   version "0.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-relative-images/-/gatsby-remark-relative-images-0.3.0.tgz#6e31b0045d943ae1822ced469ce3b39b772e8ee4"
-  integrity sha512-DvFJiuqV/2I92OvKfVRQl0KxyOEE3zI/ALbxHFXHwCMzz+Pkd/HzmSyTLVyq9iBogzTQB+OpzDtgrTAtQwddzg==
+  resolved "https://codeload.github.com/zgunz42/gatsby-remark-relative-images/tar.gz/6e5ef6452ba9ee23f25f92e1f73dd84ba5bd06b2"
   dependencies:
     babel-polyfill "^6.26.0"
     cheerio "^1.0.0-rc.3"
