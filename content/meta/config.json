@@ -1,25 +1,34 @@
 {
-  "siteTitle": "PersonalBlog - a blog starter for GatsbyJS",
-  "shortSiteTitle": "PersonalBlog GatsbyJS Starter",
-  "siteDescription": "PersonalBlog is a GatsbyJS starter.",
-  "siteUrl": "https://gatsby-starter-personal-blog.greglobinski.com",
-  "pathPrefix": "",
-  "siteImage": "preview.jpg",
-  "siteLanguage": "en",
-  "authorName": "greg lobinski",
-  "authorTwitterAccount": "greglobinski",
-  "infoTitle": "greg lobinski",
-  "infoTitleNote": "personal blog",
-  "manifestName": "PersonalBlog - a blog starter for GatsbyJS",
-  "manifestShortName": "PersonalBlog",
-  "manifestStartUrl": "/",
-  "manifestBackgroundColor": "#fff",
-  "manifestThemeColor": "#fff",
-  "manifestDisplay": "standalone",
-  "contactEmail": "john@doe.com",
   "authorSocialLinks": [
-    { "name": "github", "url": "https://github.com/greglobinski" },
-    { "name": "twitter", "url": "https://twitter.com/greglobinski" },
-    { "name": "facebook", "url": "https://facebook.com/greglobinski" }
-  ]
+    {
+      "name": "github",
+      "url": "https://github.com/zgunz42"
+    },
+    {
+      "name": "twitter",
+      "url": "https://twitter.com/adi_gungun"
+    },
+    {
+      "name": "facebook",
+      "url": "https://facebook.com/adhi.spirit"
+    }
+  ],
+  "authorTwitterAccount": "adi_gun_gun",
+  "manifestBackgroundColor": "#fff",
+  "siteUrl": "https://adibite.xzy",
+  "manifestThemeColor": "#fff",
+  "infoTitle": "Adi Gunawan",
+  "siteTitle": "Adibite - a blog by Adi Gunawan",
+  "manifestDisplay": "standalone",
+  "siteImage": "preview.jpg",
+  "shortSiteTitle": "Adibite",
+  "siteDescription": "Blog made by adi gunawan",
+  "authorName": "Adi Gunawan",
+  "pathPrefix": "",
+  "manifestShortName": "Adibite",
+  "manifestName": "Adibite - a blog starter by Adi Gunawan",
+  "manifestStartUrl": "/",
+  "infoTitleNote": "personal blog",
+  "contactEmail": "adi_gunawan@live.com",
+  "siteLanguage": "en"
 }
