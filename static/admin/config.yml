@@ -28,7 +28,7 @@ collections:
     folder: "content/posts"
     create: true
     extension: "md"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}--{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Subtitle", name: "subTitle", widget: "string"}
