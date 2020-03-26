@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
 });
 
-const config = require("./content/meta/config");
+const config = require("./content/meta/config.json");
 
 const query = `{
   allMarkdownRemark(filter: {fields: { group: { regex: "/posts|pages/" } }}) {
@@ -50,6 +50,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-top-layout`,
+    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
@@ -82,9 +83,22 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `media`,
+        path: `${__dirname}/content/media/`
+      }
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-relative-images`,
+            options: {
+              name: `media`
+            }
+          },
           `gatsby-plugin-sharp`,
           {
             resolve: `gatsby-remark-images`,
@@ -100,7 +114,12 @@ module.exports = {
             }
           },
           `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `static`
+            }
+          },
           `gatsby-remark-smartypants`
         ]
       }

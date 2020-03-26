@@ -1,0 +1,99 @@
+backend:
+  name: github
+  repo: zgunz42/adibite
+  squash_merges: true
+  open_authoring: true
+
+#  branch: master
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+#publish_mode: editorial_workflow
+
+local_backend: true
+
+site_url: https://adibite.xyz
+
+publish_mode: editorial_workflow
+
+media_folder: static/media
+public_folder: content/media
+
+collections:
+  - name: "blog"
+    label: "Blog Post"
+    folder: "content/posts"
+    create: true
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}--{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subTitle", widget: "string"}
+      - {label: "Created Date", name: "createAt", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "text"}
+      - {label: "Draft", name: "draft", widget: "boolean"}
+      - {label: "Image Cover", name: "cover", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+  - name: "page"
+    label: "Blog Page"
+    folder: "content/pages"
+    create: true
+    extension: "md"
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Created Date", name: "createAt", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "meta"
+    label: "Site Meta"
+    files:
+      - file: "content/meta/config.json"
+        label: Config
+        extension: "json"
+        name: config
+        fields:
+          - {label: "Site Language", name: "siteTitle", widget: string}
+          - {label: "Site Title", name: "shortSiteTitle", widget: string}
+          - {label: "Short SiteTitle", name: "siteDescription", widget: string}
+          - {label: "Site Description", name: "siteUrl", widget: string}
+          - {label: "Site Url", name: "pathPrefix", widget: string}
+          - {label: "pathPrefix", name: "siteImage", widget: string}
+          - {label: "Site Image", name: "siteLanguage", widget: string}
+          - {label: "Site Language", name: "authorName", widget: string}
+          - {label: "Author Name", name: "authorTwitterAccount", widget: string}
+          - {label: "Author TwitterAccount", name: "infoTitle", widget: string}
+          - {label: "Info Title", name: "infoTitleNote", widget: string}
+          - {label: "Info TitleNote", name: "manifestName", widget: string}
+          - {label: "Manifest Name", name: "manifestShortName", widget: string}
+          - {label: "Manifest ShortName", name: "manifestStartUrl", widget: string}
+          - {label: "Manifest StartUrl", name: "manifestBackgroundColor", widget: string}
+          - {label: "Manifest BackgroundColor", name: "manifestThemeColor", widget: string}
+          - {label: "Manifest ThemeColor", name: "manifestDisplay", widget: string}
+          - {label: "Manifest Display", name: "contactEmail", widget: string}
+          - {label: "Author Social Links", name: "authorSocialLinks", widget: list, fields: [{label: "Name", name: "name", widget: "string"}, {label: "url", name: "url", widget: "string"}]}
+  - name: "part"
+    label: "Site Part"
+    files:
+      - file: "content/part/author.md"
+        label: "Author"
+        name: "author"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "content/part/footnote.md"
+        label: "Footnote"
+        name: "footnote"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "content/part/info.md"
+        label: "Info"
+        name: "info"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+

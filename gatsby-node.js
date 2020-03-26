@@ -4,11 +4,16 @@ const _ = require("lodash");
 const Promise = require("bluebird");
 const path = require("path");
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
+
+  fmImagesToRelative(node); // convert image paths for gatsby images
+
   if (node.internal.type === `MarkdownRemark`) {
     const parent = getNode(node.parent);
+    console.log(node, getNode());
     const slug = createFilePath({ node, getNode, basePath: `pages` });
     const prefix = ~slug.indexOf("--") ? slug.indexOf("--") : 0;
     const shortSlugStart = prefix ? prefix + 2 : 0;

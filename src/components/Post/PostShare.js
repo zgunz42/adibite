@@ -14,7 +14,7 @@ import {
   LinkedinIcon
 } from "react-share";
 
-import config from "../../../content/meta/config";
+import config from "../../../content/meta/config.json";
 
 const styles = theme => ({
   share: {

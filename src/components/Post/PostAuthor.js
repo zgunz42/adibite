@@ -2,7 +2,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import { Avatar, withStyles } from "@material-ui/core";
 
-import config from "../../../content/meta/config";
+import config from "../../../content/meta/config.json";
 import avatar from "../../images/jpg/avatar.jpg";
 
 const styles = theme => ({
