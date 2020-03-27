@@ -2,7 +2,7 @@
 title: You only live once
 subTitle: But if you do it right, once is enough
 category: "sayings"
-cover: ../media/photo-1456518563096-0ff5ee08204e-cover.jpg
+cover: /media/photo-1456518563096-0ff5ee08204e-cover.jpg
 ---
 
 Fusce a metus eu diam varius congue nec nec sapien. Nunc convallis accumsan justo. **Pellentesque** habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec malesuada vehicula lectus, viverra sodales ipsum gravida nec. _Integer gravida_ nisi ut magna mollis molestie. Nullam [pharetra](http://google.com) accumsan sagittis. Proin tristique rhoncus orci, eget vulputate nisi sollicitudin et. Quisque lacus augue, mollis non mollis et, ullamcorper in purus. Morbi et sem orci.
@@ -11,7 +11,7 @@ Fusce a metus eu diam varius congue nec nec sapien. Nunc convallis accumsan just
 
 Praesent accumsan odio in ante ullamcorper id pellentesque mauris rhoncus. Duis vitae neque dolor. Duis sed purus at eros bibendum cursus nec a nulla. Donec turpis quam, ultricies id pretium sit amet, gravida eget leo.
 
-![unsplash.com](../media/photo-1456518563096-0ff5ee08204e.jpg)
+![unsplash.com](/media/photo-1456518563096-0ff5ee08204e.jpg)
 
 The Big Oxmox advised her not to do so, because there were thousands of
 bad Commas, wild Question Marks and devious Semikoli, but the Little

@@ -24,33 +24,29 @@ const styles = theme => ({
 });
 
 const InfoMenu = props => {
-  const { classes, pages, linkOnClick } = props;
+  const { classes, menu, linkOnClick } = props;
 
   return (
     <nav className={classes.infoMenu}>
-      {pages.map((page, i) => {
-        const { fields, frontmatter } = page.node;
+      {menu.map(({ slug, menuTitle }) => {
         return (
           <Link
-            key={fields.slug}
-            to={fields.slug}
+            key={slug}
+            to={slug}
             onClick={linkOnClick}
             className={classes.link}
             data-shape="closed"
           >
-            {frontmatter.menuTitle ? frontmatter.menuTitle : frontmatter.title}
+            {menuTitle}
           </Link>
         );
       })}
-      <Link to="/contact/" onClick={linkOnClick} className={classes.link} data-shape="closed">
-        Contact
-      </Link>
     </nav>
   );
 };
 
 InfoMenu.propTypes = {
-  pages: PropTypes.array.isRequired,
+  menu: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   linkOnClick: PropTypes.func.isRequired
 };

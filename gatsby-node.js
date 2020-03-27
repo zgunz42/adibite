@@ -13,7 +13,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const parent = getNode(node.parent);
-    console.log(node, getNode());
     const slug = createFilePath({ node, getNode, basePath: `pages` });
     const prefix = ~slug.indexOf("--") ? slug.indexOf("--") : 0;
     const shortSlugStart = prefix ? prefix + 2 : 0;

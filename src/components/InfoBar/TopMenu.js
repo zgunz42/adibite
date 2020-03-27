@@ -30,7 +30,7 @@ const styles = theme => ({
 
 // eslint-disable-next-line require-jsdoc
 function TopMenu(props) {
-  const { classes, pages } = props;
+  const { classes, menu } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -75,32 +75,20 @@ function TopMenu(props) {
                 >
                   Home
                 </MenuItem>
-                {pages.map(page => {
-                  const { fields, frontmatter } = page.node;
-
+                {menu.map(({ slug, menuTitle }) => {
                   return (
-                    <Link key={fields.slug} to={fields.slug} style={{ display: "block" }}>
+                    <Link key={slug} to={slug} style={{ display: "block" }}>
                       <MenuItem
                         onClick={e => {
                           props.pageLinkOnClick(e);
                           handleClose();
                         }}
                       >
-                        {frontmatter.menuTitle ? frontmatter.menuTitle : frontmatter.title}
+                        {menuTitle}
                       </MenuItem>
                     </Link>
                   );
                 })}
-                <Link to="/contact/" style={{ display: "block" }}>
-                  <MenuItem
-                    onClick={e => {
-                      props.pageLinkOnClick(e);
-                      handleClose();
-                    }}
-                  >
-                    Contact
-                  </MenuItem>
-                </Link>
               </MenuList>
             </Paper>
           </Grow>
@@ -111,7 +99,7 @@ function TopMenu(props) {
 }
 
 TopMenu.propTypes = {
-  pages: PropTypes.array.isRequired,
+  menu: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
   pageLinkOnClick: PropTypes.func.isRequired,
   homeLinkOnClick: PropTypes.func.isRequired

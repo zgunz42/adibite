@@ -1,6 +1,6 @@
 /* eslint-disable no-invalid-this */
 import { forceCheck } from "react-lazyload";
-// import { navigateTo } from 'gatsby-link';
+import { navigate } from "gatsby";
 
 export function featureNavigator(e) {
   e && e.preventDefault();
@@ -17,11 +17,9 @@ export function featureNavigator(e) {
 
           // uncomment following lines if you want to count featuring Navigator as a visit
           // to index page ('/'), you have to also uncomment import { navigateTo }...
-          /*
           setTimeout(() => {
-            navigateTo("/");
+            navigate("/");
           }, 1000);
-          */
         });
       }, 300);
     } else {

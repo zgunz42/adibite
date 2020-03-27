@@ -4,9 +4,10 @@ subTitle: sample
 createAt: 2020-03-26T08:16:14.185Z
 category: github
 draft: false
-cover: /media/2122_ciri-ciri-sperma-pria-sehat-dan-kuat.jpg
+cover: /media/rand.jpg
 tags:
-  - adibite
+  - rand
+  
 ---
 # Collection Types
 

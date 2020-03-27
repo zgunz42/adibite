@@ -5,7 +5,6 @@ import IconButton from "@material-ui/core/IconButton";
 
 import { Link } from "gatsby";
 import { connect } from "react-redux";
-// import screenfull from "screenfull";
 
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
@@ -24,7 +23,7 @@ import { featureNavigator, moveNavigatorAside } from "./../../utils/shared";
 import FontSetter from "./FontSetter";
 import CategoryFilter from "./CategoryFilter";
 
-const screenfull = typeof window !== `undefined` ? require("screenfull") : {}
+const screenfull = typeof window !== `undefined` ? require("screenfull") : {};
 const styles = theme => ({
   actionsBar: {
     position: "absolute",
