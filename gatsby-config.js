@@ -49,8 +49,15 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/static/media/`,
+        name: "media"
+      }
+    },
     `gatsby-plugin-top-layout`,
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
@@ -82,37 +89,24 @@ module.exports = {
         path: `${__dirname}/content/parts/`
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `media`,
-        path: `${__dirname}/content/media/`
-      }
-    },
-    {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/static/media`,
-        name: "media_uploads"
-      }
-    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          {
-            resolve: `gatsby-remark-relative-images`,
-            options: {
-              name: `media_uploads`
-            }
-          },
-          `gatsby-plugin-sharp`,
+          `gatsby-remark-relative-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
               backgroundColor: "transparent"
+            }
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `static`
             }
           },
           {
@@ -123,17 +117,17 @@ module.exports = {
           },
           `gatsby-remark-prismjs`,
           {
-            resolve: `gatsby-remark-copy-linked-files`,
+            resolve: "gatsby-remark-external-links",
             options: {
-              destinationDir: `static`
+              target: "_self",
+              rel: "nofollow"
             }
           },
           `gatsby-remark-smartypants`
         ]
       }
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     {

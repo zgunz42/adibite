@@ -5,14 +5,14 @@ menuTitle: My starters
 
 [Personal**Blog**](https://github.com/greglobinski/gatsby-starter-personal-blog) is not my first [GatsbyJS](https://www.gatsbyjs.org/) starter.
 
-![SimpleLanding](../../media/gatsby-starter-simple-landing.png)
+![SimpleLanding](/media/gatsby-starter-simple-landing.png)
 
 ### SimpleLanding
 
 As the name says, it is a landing page starter.
 [Demo](https://gatsby-starter-simple-landing.greglobinski.com/) | [Github repo](https://github.com/greglobinski/gatsby-starter-simple-landing)
 
-![StyledBlog](../../media/gatsby-styled-blog-starter.jpg)
+![StyledBlog](/media/gatsby-styled-blog-starter.jpg)
 
 ### StyledBlog
 
