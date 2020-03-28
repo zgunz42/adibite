@@ -1,0 +1,20 @@
+diff --git a/node_modules/gatsby-remark-relative-images/index.js b/node_modules/gatsby-remark-relative-images/index.js
+index 2326f5e..1c70f93 100644
+--- a/node_modules/gatsby-remark-relative-images/index.js
++++ b/node_modules/gatsby-remark-relative-images/index.js
+@@ -65,13 +65,12 @@ module.exports = function (_ref, pluginOptions) {
+               case 2:
+                 // Get the markdown file's parent directory
+                 parentDirectory = getNode(markdownNode.parent).dir;
+-                imagePath = slash(path.join(parentDirectory, node.url)); // See if there is a matching file path from gatsby-source-filesystem
+-
+                 imageNode = _.find(files, function (file) {
+-                  return slash(path.normalize(file.absolutePath)) === imagePath;
++                  return slash(path.normalize(file.absolutePath)).endsWith(node.url);
+                 }); // Return if we didn't find a match
+ 
+                 if (imageNode) {
++                  imagePath = slash(path.normalize(imageNode.absolutePath));
+                   _context.next = 7;
+                   break;
+                 }
