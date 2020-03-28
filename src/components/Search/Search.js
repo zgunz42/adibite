@@ -20,7 +20,6 @@ const styles = theme => ({
     },
     "& .ais-SearchBox-input": {
       border: "none",
-      fontFamily: theme.base.fonts.styledFamily,
       padding: ".2em",
       fontSize: "1.4em",
       flexGrow: 1
