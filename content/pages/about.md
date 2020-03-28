@@ -1,10 +1,13 @@
 ---
 title: About
+menuTitle: about
 ---
 
-This is a demo site of the [PersonalBlog](https://github.com/greglobinski/gatsby-starter-personal-blog) GatsbyJS starter.
+This is a personal blog of the [AdiBite](https://github.com/zgunz42/adibite) Site.
 
-The starter is a ready to use, easy to customize 'like theme' starter. It has everything what blog should have and some more.
+In this blog we cover variety of fields like programing, design, and quotes to build
+up softskill. You can also support this site by buy some merchandise and give donation to paypal
+
 
 ### Standard features:
 
@@ -31,7 +34,3 @@ The starter is a ready to use, easy to customize 'like theme' starter. It has ev
 * Custom webpack `CommonsChunkPlugin` settings
 * Webpack `BundleAnalyzerPlugin`
 * Contact **form validation** (react-material-ui-form-validator)
-
-## Instructions
-
-For detailed instructions go to [Front-end web development with Greg](https://dev.greglobinski.com/gatsby-starter-personal-blog/).

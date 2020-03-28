@@ -2,4 +2,5 @@
 title: author
 ---
 
-**Mr. Gatsby** Proin ornare ligula eu tellus tempus elementum. Aenean [bibendum](/) iaculis mi, nec blandit lacus interdum vitae. Vestibulum non nibh risus, a scelerisque purus. :hearts:
+**Adi Gunawan** is writer and programmer who like to write some tutorial and share his experience. He has been
+ doing coding for more than 4 year and has been contributing to many open source projects :hearts:

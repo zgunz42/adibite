@@ -1,6 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { find } from "lodash";
 
 import theme from "../styles/theme";
 
@@ -15,6 +16,7 @@ import LayoutWrapper from "../components/LayoutWrapper";
 import { isWideScreen, timeoutThrottlerHandler } from "../utils/helpers";
 import { graphql, useStaticQuery } from "gatsby";
 import asyncComponent from "../components/common/AsyncComponent";
+import { menus } from "../../content/meta/menu.json";
 
 const InfoBox = asyncComponent(
   () =>
@@ -32,6 +34,7 @@ const InfoBox = asyncComponent(
 // eslint-disable-next-line require-jsdoc
 function Layout({ children, ...props }) {
   const data = useStaticQuery(guery);
+  const topNav = find(menus, { position: "top_menu" });
   const timeouts = {};
 
   React.useEffect(() => {
@@ -75,8 +78,8 @@ function Layout({ children, ...props }) {
       {children}
       <Navigator posts={data.posts.edges} />
       <ActionsBar categories={getCategories()} />
-      <InfoBar pages={data.pages.edges} parts={data.parts.edges} />
-      {props.isWideScreen && <InfoBox pages={data.pages.edges} parts={data.parts.edges} />}
+      <InfoBar menu={topNav ? topNav.menu : []} parts={data.parts.edges} />
+      {props.isWideScreen && <InfoBox menu={topNav ? topNav.menu : []} parts={data.parts.edges} />}
     </LayoutWrapper>
   );
 }
@@ -132,23 +135,6 @@ const guery = graphql`
                 }
               }
             }
-          }
-        }
-      }
-    }
-    pages: allMarkdownRemark(
-      filter: { fields: { group: { eq: "posts" }, prefix: { regex: "/^\\d+$/" } } }
-      sort: { fields: [fields___prefix], order: ASC }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            menuTitle
           }
         }
       }

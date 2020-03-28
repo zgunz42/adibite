@@ -74,6 +74,31 @@ collections:
           - {label: "Manifest Display", name: "manifestDisplay", widget: string}
           - {label: "Contact Email", name: "contactEmail", widget: string}
           - {label: "Author SocialLinks", name: "authorSocialLinks", widget: list, fields: [{label: "Name", name: "name", widget: "string"}, {label: "url", name: "url", widget: "string"}]}
+      - file: "content/meta/menu.json"
+        label: Menu
+        extension: "json"
+        name: menu
+        fields:
+          - label: menus
+            name: menus
+            widget: list
+            fields:
+              - label: position
+                name: position
+                widget: string
+              - label: menu
+                name: menu
+                widget: list
+                fields:
+                  - label: MenuTitle
+                    name: menuTitle
+                    widget: string
+                  - label: Weight
+                    name: weight
+                    widget: number
+                  - label: Url
+                    name: slug
+                    widget: string
   - name: "part"
     label: "Site Part"
     files:

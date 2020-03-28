@@ -65,7 +65,7 @@ class InfoBar extends React.Component {
   }
 
   render() {
-    const { classes, pages } = this.props;
+    const { classes, menu } = this.props;
 
     return (
       <aside className={classes.infoBar}>
@@ -77,7 +77,7 @@ class InfoBar extends React.Component {
           <small>{config.infoTitleNote}</small>
         </h3>
         <TopMenu
-          pages={pages}
+          menu={menu}
           homeLinkOnClick={this.homeLinkOnClick}
           pageLinkOnClick={this.pageLinkOnClick}
         />
@@ -88,7 +88,7 @@ class InfoBar extends React.Component {
 
 InfoBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  pages: PropTypes.array.isRequired
+  menu: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
