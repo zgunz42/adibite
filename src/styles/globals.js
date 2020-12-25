@@ -37,7 +37,6 @@ export default {
      * 2. Correct the odd `em` font sizing in all browsers.
      */
     pre: {
-      fontFamily: "monospace, monospace" /* 1 */,
       fontSize: "1em" /* 2 */
     },
 
@@ -76,7 +75,6 @@ export default {
      * 2. Correct the odd `em` font sizing in all browsers.
      */
     "code, kbp, samp": {
-      fontFamily: "monospace, monospace" /* 1 */,
       fontSize: "1em" /* 2 */
     },
 
@@ -155,7 +153,6 @@ export default {
      * 2. Remove the margin in Firefox and Safari.
      */
     "button, input, optgroup, select, textarea": {
-      fontFamily: "sans-serif" /* 1 */,
       fontSize: "100%" /* 1 */,
       lineHeight: "1.15" /* 1 */,
       margin: 0 /* 2 */
@@ -326,12 +323,11 @@ export default {
       "-webkit-text-size-adjust": "100%",
       "-moz-text-size-adjust": "none",
       "-ms-text-size-adjust": "100%",
-      fontFamily: theme.base.fonts.unstyledFamily,
       lineHeight: "1.15",
       textSizeAdjust: "100%"
     },
     "html.wf-active": {
-      fontFamily: theme.base.fonts.styledFamily
+      // fontFamily: theme.base.fonts.styledFamily
     },
     "*, *:before, *:after": {
       boxSizing: "inherit"

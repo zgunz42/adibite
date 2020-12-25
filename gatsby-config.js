@@ -50,6 +50,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`
+      }
+    },
+    {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",
       options: {
@@ -123,6 +129,7 @@ module.exports = {
               rel: "nofollow"
             }
           },
+          `gatsby-remark-emoji`, // <-- this line adds emoji
           `gatsby-remark-smartypants`
         ]
       }
